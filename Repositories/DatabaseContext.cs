@@ -11,8 +11,8 @@ namespace MaybeMongo.Repositories
 
         public DatabaseContext(string connectionString)
         {
-            //new Mapper();
-            _mongoClient = new MongoClient(connectionString);
+            new Mapper();
+            _mongoClient = new MongoClient("mongodb://localhost:27017");
             _rntlDatabase = _mongoClient.GetDatabase("Rntl");
         }
 

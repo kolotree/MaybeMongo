@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using CSharpFunctionalExtensions;
 using MaybeMongo.Domain;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace MaybeMongo.Repositories
@@ -22,10 +23,21 @@ namespace MaybeMongo.Repositories
 
         public T Save(T aggregateRoot)
 		{
+            SetNewIdFor(aggregateRoot);
 			var updateOptions = new UpdateOptions { IsUpsert = true };
 			_mongoCollection.ReplaceOne(item => item.Id == aggregateRoot.Id, aggregateRoot, updateOptions);
 
 			return aggregateRoot;
+		}
+
+        private void SetNewIdFor(AggregateRoot aggregateRoot)
+		{
+			if (aggregateRoot.Id == Id.None)
+            {
+                var objectId = ObjectId.GenerateNewId();
+                var bsonObjectId = new BsonObjectId(objectId);
+                aggregateRoot.SetId(Id.IdFrom(bsonObjectId.ToString()));
+            }
 		}
     }
 }

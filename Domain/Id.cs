@@ -4,7 +4,7 @@ namespace MaybeMongo.Domain
 {
     public sealed class Id : ValueObject<Id>
 	{
-		internal string StringId {get; }
+		public string StringId {get; }
 
 		private Id(string id)
 		{

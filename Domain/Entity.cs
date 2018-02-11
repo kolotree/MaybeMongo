@@ -50,7 +50,7 @@ namespace MaybeMongo.Domain
 			return (GetType().ToString() + Id).GetHashCode();
 		}
 
-		internal Entity SetId(Id id)
+		public Entity SetId(Id id)
 		{
 			Id = id;
 			return this;
