@@ -34,7 +34,8 @@ namespace MaybeMongo.Tests.MongoDbIntegrationTests
 
             var actualCustomer = repository.GetAll().First();
             actualCustomer.Name.Should().Be(newCustomer.Name);
-            
+            actualCustomer.Age.Should().Be(newCustomer.Age);
+            actualCustomer.MaybeBillingAddress.Should().Be(newCustomer.MaybeBillingAddress);
         }
     }
 }
