@@ -1,5 +1,3 @@
-using CSharpFunctionalExtensions;
-
 namespace MaybeMongo.Domain
 {
     public sealed class Customer : Entity

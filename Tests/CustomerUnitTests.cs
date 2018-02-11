@@ -15,7 +15,7 @@ namespace MaybeMongo.Tests
         }
 
         [Fact]
-        public void two_customer_with_different_ids_are_not_equal()
+        public void two_customers_with_different_ids_are_not_equal()
         {
             Milenko.Should().NotBe(Stanko);
         }
