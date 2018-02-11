@@ -3,7 +3,7 @@ using CSharpFunctionalExtensions;
 
 namespace MaybeMongo.Domain
 {
-    public sealed class Customer : Entity
+    public sealed class Customer : AggregateRoot
     {
         public string Name { get; }
         public int Age { get; }
