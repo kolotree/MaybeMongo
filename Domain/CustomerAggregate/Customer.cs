@@ -10,12 +10,12 @@ namespace MaybeMongo.Domain.CustomerAggregate
 		public int Age { get; }
 		public Maybe<Address> MaybeBillingAddress { get; private set;}
 
-		public Customer(Id id, string name, int age, Maybe<Address> maybeAddress)
+		public Customer(Id id, string name, int age, Maybe<Address> maybeBillingAddress)
 		{
 			Id = id;
 			Name = name;
 			Age = age;
-			MaybeBillingAddress = maybeAddress;
+			MaybeBillingAddress = maybeBillingAddress;
 		}
 
 		public static Customer NewCustomerFrom(string name, int age, Maybe<Address> maybeAddress)
