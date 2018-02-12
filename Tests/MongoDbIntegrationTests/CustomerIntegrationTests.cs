@@ -6,48 +6,48 @@ using Xunit;
 namespace MaybeMongo.Tests.MongoDbIntegrationTests
 {
 	using Domain.CustomerAggregate;
-	using static MaybeMongo.Domain.CustomerAggregate.Customer;
-	using static MaybeMongo.Domain.Id;
+	using static Domain.Id;
+	using static CustomerTestValues;
 
 	public sealed class CustomerIntegrationTests : IntegrationTestsBase
 	{
 		[Fact]
-		public void customer_from_database_has_id_set_to_some_value()
+		public void persisted_Milenko_has_id_set_to_some_non_None_value()
 		{
-			var newCustomer = NewCustomerFrom("John Doe", 45, Maybe<Address>.None);
+			var newMilenko = NewMilenko();
 
 			var repository = GetCustomerRepository();
-			repository.Save(newCustomer);
+			repository.Save(newMilenko);
 
-			var actualCustomer = repository.GetAll().First();
-			actualCustomer.Id.Should().NotBe(null, "Id has to be set to some value.");
-			actualCustomer.Id.Should().NotBe(None, "Id has to be set to some value.");
+			var persistedMilenko = repository.GetAll().First();
+			persistedMilenko.Id.Should().NotBe(null, "Id has to be set to some value.");
+			persistedMilenko.Id.Should().NotBe(None, "Id has to be set to some value.");
 		}
 
 		[Fact]
-		public void after_saving_both_new_customer_and_the_customer_from_db_have_equal_ids()
+		public void after_saving_both_new_Milenko_and_persisted_Milenko_have_equal_ids()
 		{
-			var newCustomer = NewCustomerFrom("John Doe", 45, Maybe<Address>.None);
+			var newMilenko = NewMilenko();
 
 			var repository = GetCustomerRepository();
-			repository.Save(newCustomer);
+			repository.Save(newMilenko);
 
-			var actualCustomer = repository.GetAll().First();
-			actualCustomer.Should().Be(newCustomer);
+			var persistedMilenko = repository.GetAll().First();
+			persistedMilenko.Should().Be(newMilenko);
 		}
 
 		[Fact]
-		public void customer_values_persisted_into_db()
+		public void milenko_values_are_persisted_into_db()
 		{
-			var newCustomer = NewCustomerFrom("John Doe", 45, Maybe<Address>.None);
+			var newMilenko = NewMilenko();
 
 			var repository = GetCustomerRepository();
-			repository.Save(newCustomer);
+			repository.Save(newMilenko);
 
-			var actualCustomer = repository.GetAll().First();
-			actualCustomer.Name.Should().Be(newCustomer.Name);
-			actualCustomer.Age.Should().Be(newCustomer.Age);
-			actualCustomer.MaybeBillingAddress.Should().Be(newCustomer.MaybeBillingAddress);
+			var persistedMilenko = repository.GetAll().First();
+			persistedMilenko.Name.Should().Be(newMilenko.Name);
+			persistedMilenko.Age.Should().Be(newMilenko.Age);
+			persistedMilenko.MaybeBillingAddress.Should().Be(newMilenko.MaybeBillingAddress);
 		}
 	}
 }

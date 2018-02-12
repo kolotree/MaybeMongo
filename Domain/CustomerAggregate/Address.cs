@@ -10,9 +10,9 @@ namespace MaybeMongo.Domain.CustomerAggregate
         
         public Address(string street, string number, string city)
         {
-            this.Street = street;
-            this.Number = number;
-            this.City = city;
+            Street = street;
+            Number = number;
+            City = city;
         }
 
         protected override bool EqualsCore(Address other) =>
