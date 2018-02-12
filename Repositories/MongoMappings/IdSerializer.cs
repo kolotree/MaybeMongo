@@ -26,8 +26,8 @@ namespace MaybeMongo.Repositories.MongoMappings
 
 		public override Id Deserialize(BsonDeserializationContext context, BsonDeserializationArgs args)
 		{
-			var idString = context.Reader.ReadObjectId();
-			return Id.IdFrom(idString.ToString());
+			var objectId = context.Reader.ReadObjectId();
+			return Id.IdFrom(objectId.ToString());
 		}
 	}
 }
