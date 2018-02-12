@@ -1,6 +1,6 @@
 namespace MaybeMongo.Domain
 {
-    public abstract class AggregateRoot : Entity
+	public abstract class AggregateRoot : Entity
 	{
 	}
 }

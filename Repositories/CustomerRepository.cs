@@ -1,11 +1,11 @@
-using MaybeMongo.Domain;
-
 namespace MaybeMongo.Repositories
 {
-    public sealed class CustomerRepository : BaseRepository<Customer>
-    {
-        public CustomerRepository(DatabaseContext databaseContext) : base(databaseContext)
-        {
-        }
-    }
+	using Domain.CustomerAggregate;
+
+	public sealed class CustomerRepository : BaseRepository<Customer>
+	{
+		public CustomerRepository(DatabaseContext databaseContext) : base(databaseContext)
+		{
+		}
+	}
 }

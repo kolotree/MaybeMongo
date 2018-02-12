@@ -1,6 +1,6 @@
 using CSharpFunctionalExtensions;
 
-namespace MaybeMongo.Domain
+namespace MaybeMongo.Domain.CustomerAggregate
 {
     public sealed class Address : ValueObject<Address>
     {

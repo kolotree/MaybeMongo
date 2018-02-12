@@ -1,9 +1,10 @@
 using MongoDB.Driver;
-using MaybeMongo.Domain;
-using MaybeMongo.Repositories.MongoMappings;
 
 namespace MaybeMongo.Repositories
 {
+	using Domain;
+	using Repositories.MongoMappings;
+
 	public sealed class DatabaseContext
 	{
 		private readonly IMongoClient _mongoClient;

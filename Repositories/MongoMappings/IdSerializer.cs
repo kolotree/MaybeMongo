@@ -1,11 +1,12 @@
-using MaybeMongo.Domain;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 
 namespace MaybeMongo.Repositories.MongoMappings
 {
-    internal sealed class IdSerializer : SerializerBase<Id>
+	using Domain;
+
+	internal sealed class IdSerializer : SerializerBase<Id>
 	{
 		public override void Serialize(BsonSerializationContext context, BsonSerializationArgs args, Id value)
 		{

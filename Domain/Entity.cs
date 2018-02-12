@@ -1,7 +1,8 @@
 namespace MaybeMongo.Domain
 {
-    using static Id;
-    public abstract class Entity
+	using static Id;
+
+	public abstract class Entity
 	{
 		public Id Id { get; protected set; }
 

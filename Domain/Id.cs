@@ -2,7 +2,7 @@ using CSharpFunctionalExtensions;
 
 namespace MaybeMongo.Domain
 {
-    public sealed class Id : ValueObject<Id>
+	public sealed class Id : ValueObject<Id>
 	{
 		public string StringId { get; private set; }
 
@@ -26,10 +26,10 @@ namespace MaybeMongo.Domain
 
 		public override string ToString() => StringId;
 
-        protected override bool EqualsCore(Id other)
-            => StringId.Equals(other.StringId);
+		protected override bool EqualsCore(Id other)
+			=> StringId.Equals(other.StringId);
 
-        protected override int GetHashCodeCore()
-            => StringId.GetHashCode();
-    }
+		protected override int GetHashCodeCore()
+			=> StringId.GetHashCode();
+	}
 }
