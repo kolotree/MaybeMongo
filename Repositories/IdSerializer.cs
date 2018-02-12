@@ -9,7 +9,18 @@ namespace MaybeMongo.Repositories
 	{
 		public override void Serialize(BsonSerializationContext context, BsonSerializationArgs args, Id value)
 		{
-            context.Writer.WriteObjectId(new ObjectId(value.StringId));
+			UpdateNoneId(value);
+			context.Writer.WriteObjectId(new ObjectId(value.StringId));
+		}
+
+		private void UpdateNoneId(Id id)
+		{
+			if (id == Id.None)
+			{
+				var objectId = ObjectId.GenerateNewId();
+				var bsonObjectId = new BsonObjectId(objectId);
+				id.SetIfNone(bsonObjectId.ToString());
+			}
 		}
 
 		public override Id Deserialize(BsonDeserializationContext context, BsonDeserializationArgs args)
