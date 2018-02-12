@@ -8,13 +8,13 @@ namespace MaybeMongo.Repositories.MongoMappings
 
 	internal sealed class IdSerializer : SerializerBase<Id>
 	{
-		public override void Serialize(BsonSerializationContext context, BsonSerializationArgs args, Id value)
+		public override void Serialize(BsonSerializationContext context, BsonSerializationArgs args, Id id)
 		{
-			UpdateNoneId(value);
-			context.Writer.WriteObjectId(new ObjectId(value.StringId));
+			UpdateIdIfNone(id);
+			context.Writer.WriteObjectId(new ObjectId(id.StringId));
 		}
 
-		private void UpdateNoneId(Id id)
+		private void UpdateIdIfNone(Id id)
 		{
 			if (id == Id.None)
 			{

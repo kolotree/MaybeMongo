@@ -25,7 +25,7 @@ namespace MaybeMongo.Tests.MongoDbIntegrationTests
 		}
 
 		[Fact]
-		public void after_saving_both_new_customer_and_the_same_customer_from_db_have_equal_ids()
+		public void after_saving_both_new_customer_and_the_customer_from_db_have_equal_ids()
 		{
 			var newCustomer = NewCustomerFrom("John Doe", 45, Maybe<Address>.None);
 
@@ -37,7 +37,7 @@ namespace MaybeMongo.Tests.MongoDbIntegrationTests
 		}
 
 		[Fact]
-		public void customer_values_persisted_to_db()
+		public void customer_values_persisted_into_db()
 		{
 			var newCustomer = NewCustomerFrom("John Doe", 45, Maybe<Address>.None);
 

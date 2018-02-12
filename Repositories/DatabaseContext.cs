@@ -19,7 +19,7 @@ namespace MaybeMongo.Repositories
 		}
 
 		public IMongoCollection<T> GetCollectionFor<T>() where T : AggregateRoot
-		 => _rntlDatabase.GetCollection<T>(typeof(T).Name);
+			=> _rntlDatabase.GetCollection<T>(typeof(T).Name);
 
 		public void Dispose()
 		{
