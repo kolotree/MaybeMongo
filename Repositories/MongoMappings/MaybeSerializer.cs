@@ -2,9 +2,9 @@ using CSharpFunctionalExtensions;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 
-namespace MaybeMongo.Repositories
+namespace MaybeMongo.Repositories.MongoMappings
 {
-    internal class MaybeSerializer<T> : SerializerBase<Maybe<T>>
+    internal sealed class MaybeSerializer<T> : SerializerBase<Maybe<T>>
     {
         private readonly IBsonSerializer _valueSerializer = BsonSerializer.LookupSerializer(typeof(T));
 

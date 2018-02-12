@@ -1,11 +1,18 @@
 using MaybeMongo.Domain;
 using MongoDB.Bson.Serialization;
 
-namespace MaybeMongo.Repositories
+namespace MaybeMongo.Repositories.MongoMappings
 {
-    public sealed class Mapper
+    internal sealed class Mapper
     {
-        static Mapper()
+		public static void MapAllClassesToMongoDb()
+		{
+			// static constructor is called when creating object instance.
+			// Also static constructor will ensure that mapping will be executed only once.
+			new Mapper();
+		}
+
+		static Mapper()
         {
             MapCommonClasses();
             MapDomain();

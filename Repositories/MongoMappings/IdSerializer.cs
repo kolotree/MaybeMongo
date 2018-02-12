@@ -3,9 +3,9 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 
-namespace MaybeMongo.Repositories
+namespace MaybeMongo.Repositories.MongoMappings
 {
-    internal class IdSerializer : SerializerBase<Id>
+    internal sealed class IdSerializer : SerializerBase<Id>
 	{
 		public override void Serialize(BsonSerializationContext context, BsonSerializationArgs args, Id value)
 		{
