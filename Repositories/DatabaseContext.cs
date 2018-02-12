@@ -12,8 +12,8 @@ namespace MaybeMongo.Repositories
         public DatabaseContext(string connectionString)
         {
             new Mapper();
-            _mongoClient = new MongoClient("mongodb://localhost:27017");
-            _rntlDatabase = _mongoClient.GetDatabase("Rntl");
+            _mongoClient = new MongoClient(connectionString);
+            _rntlDatabase = _mongoClient.GetDatabase(nameof(MaybeMongo));
         }
 
         public IMongoCollection<T> GetCollectionFor<T>() where T : AggregateRoot
