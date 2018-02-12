@@ -9,17 +9,17 @@ namespace MaybeMongo.Repositories
 	{
 		private readonly IMongoClient _mongoClient;
 
-		private readonly IMongoDatabase _rntlDatabase;
+		private readonly IMongoDatabase _database;
 
 		public DatabaseContext(string connectionString)
 		{
 			Mapper.MapAllClassesToMongoDb();   
 			_mongoClient = new MongoClient(connectionString);
-			_rntlDatabase = _mongoClient.GetDatabase(nameof(MaybeMongo));
+			_database = _mongoClient.GetDatabase(nameof(MaybeMongo));
 		}
 
 		public IMongoCollection<T> GetCollectionFor<T>() where T : AggregateRoot
-			=> _rntlDatabase.GetCollection<T>(typeof(T).Name);
+			=> _database.GetCollection<T>(typeof(T).Name);
 
 		public void Dispose()
 		{
