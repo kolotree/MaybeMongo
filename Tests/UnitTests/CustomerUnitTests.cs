@@ -23,7 +23,7 @@ namespace MaybeMongo.Tests
 		[Fact]
 		public void billing_address_correctly_changed()
 		{
-			Milenko.SetAddress(MilenkoAddress);
+			Milenko.SetBillingAddress(MilenkoAddress);
 
 			Milenko.MaybeBillingAddress.HasValue.Should().BeTrue("billing address is not set.");
 			Milenko.MaybeBillingAddress.Value.Should().Be(MilenkoAddress);

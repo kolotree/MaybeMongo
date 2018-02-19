@@ -21,9 +21,9 @@ namespace MaybeMongo.Domain.CustomerAggregate
 		public static Customer NewCustomerFrom(string name, int age, Maybe<Address> maybeAddress)
 			=> new Customer(None, name, age, maybeAddress);
 
-		public Customer SetAddress(Address billingAddress)
+		public Customer SetBillingAddress(Address address)
 		{
-			MaybeBillingAddress = billingAddress;
+			MaybeBillingAddress = address;
 			return this;
 		}
 	}
