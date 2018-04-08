@@ -23,7 +23,6 @@ namespace MaybeMongo.Repositories.MongoMappings
 
         public override Maybe<T> Deserialize(BsonDeserializationContext context, BsonDeserializationArgs args)
         {
-            
             var value = (T)_valueSerializer.Deserialize(context);
             return Maybe<T>.From(value);   
         }

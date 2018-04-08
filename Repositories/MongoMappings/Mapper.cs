@@ -5,13 +5,12 @@ namespace MaybeMongo.Repositories.MongoMappings
 	using Domain;
 	using Domain.CustomerAggregate;
 
-	internal sealed class Mapper
+	internal static class Mapper
 	{
 		public static void MapAllClassesToMongoDb()
 		{
-			// static constructor is called when creating object instance.
+			// static constructor is called when calling any class method.
 			// Also static constructor will ensure that mapping will be executed only once.
-			new Mapper();
 		}
 
 		static Mapper()

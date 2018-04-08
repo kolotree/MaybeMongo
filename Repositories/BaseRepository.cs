@@ -8,23 +8,23 @@ namespace MaybeMongo.Repositories
 
 	public abstract class BaseRepository<T> where T : AggregateRoot
 	{
-		protected readonly IMongoCollection<T> _mongoCollection;
+		protected readonly IMongoCollection<T> MongoCollection;
 		
 		public BaseRepository(DatabaseContext databaseContext)
 		{
-			_mongoCollection = databaseContext.GetCollectionFor<T>();
+			MongoCollection = databaseContext.GetCollectionFor<T>();
 		}
 
 		public Maybe<T> GetBy(Id id)
-			=> _mongoCollection.Find(item => item.Id == id).SingleOrDefault();
+			=> MongoCollection.Find(item => item.Id == id).SingleOrDefault();
 
 		public IList<T> GetAll()
-			=> _mongoCollection.AsQueryable().ToList();
+			=> MongoCollection.AsQueryable().ToList();
 
 		public T Save(T aggregateRoot)
 		{
 			var updateOptions = new UpdateOptions { IsUpsert = true };
-			_mongoCollection.ReplaceOne(item => item.Id == aggregateRoot.Id, aggregateRoot, updateOptions);
+			MongoCollection.ReplaceOne(item => item.Id == aggregateRoot.Id, aggregateRoot, updateOptions);
 			return aggregateRoot;
 		}
 	}
